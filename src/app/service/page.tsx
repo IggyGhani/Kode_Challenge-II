@@ -14,11 +14,11 @@ export default async function Service() {
 
   return (
     <div>
-      {collection.map((item) => (
+      {collection.map((item: any) => (
         <>
-          <h1>{item.fields.title}</h1>
-          <p>{item.fields.prices}</p>
-          <img src={`https://${item.fields.image.fields.file.url}`} alt="" />
+          <h1>{item?.fields?.title}</h1>
+          <p>{item?.fields?.prices}</p>
+          <img src={`https://${item?.fields?.image?.fields?.file?.url}`} alt="" />
         </>
       ))}
     </div>
