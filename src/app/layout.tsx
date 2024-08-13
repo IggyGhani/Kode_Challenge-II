@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,32 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className="flex items-center gap-[30px]">
+          <Image
+            src="/Greenfair.jpg"
+            alt="A kind of tree that has some leaves"
+            width={100}
+            height={80}
+            className=""
+          />
+          <ul className="flex gap-[30px]">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/service">Services</a>
+            </li>
+            <li>
+              <a href="/about">About us</a>
+            </li>
+            <li>
+              <a href="/teams">Teams</a>
+            </li>
+          </ul>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
