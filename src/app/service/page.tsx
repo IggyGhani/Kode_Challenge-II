@@ -2,11 +2,11 @@ import { createClient } from "contentful";
 
 export default async function Service() {
   const client = createClient({
-    space: "wbyms5ifytgt",
-    accessToken: "J30sD7ayEYIwZa6QeS08GC8W7BaanRyGGQPX-kCDgks",
+    space: process.env.CONTENTFUL_SPACE_ID!,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
   });
   const response = await client.getEntries({
-    content_type: "exhibit",
+    content_type: process.env.CONTENTFUL_CONTENT_TYPE!,
   });
   const collection = response.items;
 
@@ -18,7 +18,10 @@ export default async function Service() {
         <>
           <h1>{item?.fields?.title}</h1>
           <p>{item?.fields?.prices}</p>
-          <img src={`https://${item?.fields?.image?.fields?.file?.url}`} alt="" />
+          <img
+            src={`https://${item?.fields?.image?.fields?.file?.url}`}
+            alt=""
+          />
         </>
       ))}
     </div>
